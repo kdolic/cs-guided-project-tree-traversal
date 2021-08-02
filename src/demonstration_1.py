@@ -21,6 +21,24 @@ class TreeNode:
         self.left = left
         self.right = right
 
-def inorder_traversal(root):
-    # Your code here
+def inorder_traversal(root, array=[]):
+    # Go left
+    if root.left is not None:
+        inorder_traversal(root.left, array)
+
+    # Evaluate
+    array.append(root.val)
+
+    # Go right
+    if root.right is not None:
+        inorder_traversal(root.right, array)
+
+    return array
+
+
+root = TreeNode(3)
+root.right = TreeNode(1)
+root.right.left = TreeNode(5)
+
+print(inorder_traversal(root))
 
